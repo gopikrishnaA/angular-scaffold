@@ -1,0 +1,6 @@
+<div style="text-align:center" >
+  <h2 *ngIf="joke">{{ joke.joke }}</h2>
+  <button (click)="rateJoke(joke,'Like')">Like</button>
+  <button (click)="rateJoke(joke,'UnLike')">UnLike</button>
+  <button *ngIf="isRatedJokesExist()" routerLink="/summary" >Summary</button>
+</div>

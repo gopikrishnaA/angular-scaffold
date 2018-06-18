@@ -1,0 +1,29 @@
+<table border='1' cellPadding='10' cellSpacing='0' class="summary-table">
+  <thead>
+    <tr>
+      <th class='th1'>S.no</th>
+      <th class='th2'>JokeId</th>
+      <th class='th3'>Joke</th>
+      <th class='th4'>
+        
+        <label>FilterBy
+          <select [(ngModel)]="selectedValue" name="selectedValue">
+          <option *ngFor="let option of options" [ngValue]="option" >{{option}}</option>
+        </select>
+      </label>
+      </th>
+      <th class='th5' (click)="sortByTime()">TimeStamp</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="ratedJokes">
+    <tr *ngFor="let item of ratedJokes | filterRatings: selectedValue | filterByTime: isSort; let i = index">
+      <td>{{i+1}}</td>
+      <td class="td1" routerLink="/jokeDetails/{{item.id}}">
+        {{item.id}}
+      </td>
+      <td>{{item.joke}}</td>
+      <td>{{item.status}}</td>
+      <td>{{item.timeStamp}}</td>
+    </tr>
+  </tbody>
+</table>
